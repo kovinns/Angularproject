@@ -1,0 +1,29 @@
+<div *ngIf="authentifie == false">
+  <app-tabs>
+    <app-tab tabTitle="Se connecter">
+      <form (ngSubmit)="authentification()" [formGroup]="formGroupAuthentifier">
+        <input formControlName="pseudo" type="text" name="pseudo" placeholder="Entrez votre pseudo ..." [style.background-color]="pseudoStyle('pseudo')"/>
+        <p [hidden]="pseudoIsCorect">Votre pseudo ne peut pas contenir d'espace</p>
+        <input formControlName="mdp" type="password" name="mdp" placeholder="Entrez votre mot de passe ..." [style.background-color]="pseudoStyle('mdp')"/>
+        <p [hidden]="mdpIsCorect">Votre mot de passe ne peut pas contenir d'espace</p>
+        <input type="submit" [disabled]="! authentificationValide()">
+      </form>
+    </app-tab>
+    <app-tab tabTitle="Créer un compte">
+      <form (ngSubmit)="creation()" [formGroup]="formGroupCreer">
+        <input formControlName="email" type="text" name="email" placeholder="Entrez votre adresse Email ..." [style.background-color]="emailStyle()"/>
+        <p [hidden]="creerEmailIsCorect">votre adresse email n'est pas correcte</p>
+        <input formControlName="pseudo" type="text" name="pseudo" placeholder="Entrez votre pseudo ..." [style.background-color]="pseudoStyle('creerPseudo')"/>
+        <p [hidden]="creerPseudoIsCorect">Votre pseudo ne peut pas contenir d'espace</p>
+        <input formControlName="mdp" type="password" name="mdp" placeholder="Entrez votre mot de passe ..." [style.background-color]="pseudoStyle('creerMdp')"/>
+        <p [hidden]="creerMdpIsCorect">Votre mot de passe ne peut pas contenir d'espace</p>
+        <input formControlName="confirmMdp" type="password" name="confirmMdp" placeholder="Confirmez votre mot de passe ..." [style.background-color]="confirmMdpStyle()"/>
+        <p [hidden]="confirmMdpIsCorect">La confirmaion n'est pas idenique à votre mo de passe</p>
+        <input type="submit" [disabled]="! creationValide()">
+      </form>
+    </app-tab>
+  </app-tabs>
+</div>
+<div *ngIf="authentifie == true">
+  <app-form></app-form>
+</div>

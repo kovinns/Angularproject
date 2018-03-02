@@ -1,0 +1,15 @@
+<div class="onglet">
+	<img id="logo" src="../../assets/image/logo2.png" alt="logo" title="logo" /><br/>
+	<form (ngSubmit)="creationAdresse()" [formGroup]="formGroupAdr" name="formulaireDeRecherche">
+		<p>Vous voulez rechercher : </p>
+		<div>
+			<label>Par rapport à une ville<input formControlName="typeSaisie" type="radio" name="typeSaisie" value="ville" [checked]="true" /></label>
+			<label>Par rapport à ma position<input formControlName="typeSaisie" type="radio" name="typeSaisie" value="position" /></label>
+			<p>{{formGroupAdr.value | json}}</p>
+		</div>
+		<div *ngIf="formGroupAdr.value.typeSaisie != 'position'">
+			<input formControlName="ville" type="search" name="searchfield" placeholder="Saisissez un ville ..." /><br/><br/>
+		</div>
+		<input type="submit" value="Rechercher"/><br/>
+	</form>
+</div>

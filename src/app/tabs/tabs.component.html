@@ -1,0 +1,6 @@
+<ul class="onglet">
+	<li *ngFor="let tab of tabs" (click)="selectTab(tab)" [style.background-color]="tab.getStyle()">
+        {{tab.tabTitle}}
+      </li>
+</ul>
+<ng-content></ng-content>
